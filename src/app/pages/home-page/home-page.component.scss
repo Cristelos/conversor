@@ -1,5 +1,6 @@
 .contenedor{
     text-align: center;
+    padding: 20px;
     &__input{
         display: flex;
         flex-direction: row;
@@ -17,7 +18,7 @@
         justify-content: center;
     }
     &__banderas{
-        width: 10%;
+        width: 8%;
     }
     &__boton{
         border: none;
@@ -38,4 +39,19 @@
     &__datos-destacado{
         font-weight: 800;
     }
+    @media only screen and (max-width: 768px) {
+        /* For mobile phones: */
+        &__monedas{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 15px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+        &__banderas{
+            width: 40%;
+        }
+      }
 }
