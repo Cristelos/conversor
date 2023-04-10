@@ -6,7 +6,9 @@
         </div> -->
         <input type="number" [(ngModel)]="cambio">
         <div *ngIf="monedas">
-
+            <select #selectMoneda name="currency" (change)="getMoneda(selectMoneda.value)" [(ngModel)]="base">
+                <option *ngFor="let key of monedas" value="{{key.moneda}}">{{key.moneda}}</option>
+            </select>
         </div>
     </div>
     <div *ngIf="!monedas">
@@ -18,7 +20,7 @@
             <button class="contenedor__boton" (click)="getMoneda(item.moneda)">
                  <img src="./assets/{{item.moneda}}.png" class="contenedor__img">
             </button>
-            <p>{{item.moneda}}: {{((item.value * cambio).toFixed(3))}}</p>
+            <p class="contenedor__datos"><span class="contenedor__datos-destacado">{{item.moneda}}:<br></span> {{((item.value * cambio).toFixed(3))}}</p>
         </div>
     </div>
 </div>
