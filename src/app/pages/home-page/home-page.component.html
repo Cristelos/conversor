@@ -1,11 +1,11 @@
 <div class="contenedor">
     <h1>Exchance</h1>
     <div class="contenedor__input">
-        <input type="number">
+        <input type="number" [(ngModel)]="nombreMonedas">
     </div>
     <div class="contenedor__monedas">
         <div *ngFor="let moneda of monedas">
-            <p>{{moneda.base}}</p>
+            <p>{{moneda}}</p>
         </div>
     </div>
 </div>

@@ -12,5 +12,9 @@ export class DatosService {
     return this.http.get("https://api.vatcomply.com/rates");
   }
 
+  getCambioMonedas(rates: string){
+    return this.http.get(`https://api.vatcomply.com/rates=${rates}`);
+  }
+
 
 }
