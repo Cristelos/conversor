@@ -8,13 +8,13 @@ export class DatosService {
 
   constructor(private http: HttpClient) { }
 
-  getMonedas(){
+  getMonedas(base: string = "EUR"){
     return this.http.get("https://api.vatcomply.com/rates");
   }
 
-  getCambioMonedas(rates: string){
-    return this.http.get(`https://api.vatcomply.com/rates=${rates}`);
-  }
+  // getCambioMonedas(base: string = "EUR"){
+  //   return this.http.get("https://api.vatcomply.com/rates?base=" + base)
+  // }
 
 
 }

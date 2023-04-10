@@ -5,11 +5,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ConversorPipe implements PipeTransform {
 
-  transform(value: any[], nombreMoneda: string): unknown {
-    if(nombreMoneda === '' || nombreMoneda === undefined){
-      return value;
-    }
-    return value.filter(monedas => monedas.rate.indexOf(nombreMoneda) != -1)
+  transform(value: string): string {
+    if(!value) return "";
+    return value.toLowerCase();
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { DatosService } from 'src/app/shared/services/datos.service';
 
 @Component({
@@ -8,26 +9,29 @@ import { DatosService } from 'src/app/shared/services/datos.service';
 })
 export class HomePageComponent implements OnInit{
 
-  monedas!: any[];
+  monedas: any = [];
   nombreMonedas!: '';
+  base: any = "EUR"; 
 
-  constructor(private datosServices: DatosService){
+  constructor(private datosServices: DatosService, private route: ActivatedRoute){
     
   }
   ngOnInit(): void {
-    this.imprimirMonedas("",1)
+    this.route.paramMap.subscribe( paramas =>{
+      this.getMoneda( this.base );
+    })
   }
 
-  imprimirMonedas(nombre:string,moneda:number){
+  getMoneda( base: string | null = "EUR" ){
+    // console.log(base);
+    
     this.datosServices.getMonedas().subscribe((res:any) =>{
-      console.log(res.rates);
-      // this.monedas = res.rates;
-    })
-  }
-  cambioMoneda(rates:string){
-    this.datosServices.getCambioMonedas(rates).subscribe((res:any) =>{
-      this.monedas = res.rates;
-    })
+      this.monedas = [];
+      for (const key in res.rates) {
+        let moneda = {'moneda':key, value: res.rates(key)};
+        this.monedas.push(moneda);
+      }
+  })
   }
 
 }
