@@ -1,18 +1,24 @@
 <div class="contenedor">
     <h1>Exchance</h1>
     <div class="contenedor__input">
-        <!-- <div *ngFor="let euro of base"> -->
+        <!-- <div *ngFor="let euro of base">
             <p>{{base.base}}</p>
-        <!-- </div> -->
-        <input type="number" [(ngModel)]="cantidad">
+        </div> -->
+        <input type="number" [(ngModel)]="cambio">
+        <div *ngIf="monedas">
+
+        </div>
     </div>
     <div *ngIf="!monedas">
-        <p>{{base}}</p>
+        <label>{{base}}</label>
     </div>
     <div class="contenedor__monedas">
         <!-- <div *ngFor="let moneda of monedas | conversor: nombreMonedas"> -->
-            <div *ngFor="let item of monedas">
-            <p>{{item.moneda}}: {{item.value * cantidad}}</p>
+        <div *ngFor="let item of monedas" class="contenedor__banderas">
+            <button class="contenedor__boton" (click)="getMoneda(item.moneda)">
+                 <img src="./assets/{{item.moneda}}.png" class="contenedor__img">
+            </button>
+            <p>{{item.moneda}}: {{((item.value * cambio).toFixed(3))}}</p>
         </div>
     </div>
 </div>

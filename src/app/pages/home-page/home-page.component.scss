@@ -1,0 +1,28 @@
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    &__monedas{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 15px;
+        margin-top: 30px;
+        justify-content: center;
+    }
+    &__banderas{
+        width: 6%;
+    }
+    &__boton{
+        
+        border:none;
+        background-color: none;
+    }
+    &__img{
+        width: 100%;
+        aspect-ratio: 3/2;
+        object-fit: contain;
+    }
+}

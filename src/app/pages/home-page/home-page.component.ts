@@ -10,7 +10,7 @@ import { DatosService } from 'src/app/shared/services/datos.service';
 export class HomePageComponent implements OnInit{
 
   monedas: any = [];
-  nombreMonedas!: '';
+  cambio = 1;
   base: any = "EUR"; 
 
   constructor(private datosServices: DatosService, private route: ActivatedRoute){
@@ -24,11 +24,13 @@ export class HomePageComponent implements OnInit{
 
   getMoneda( base: string | null = "EUR" ){
     // console.log(base);
-    
-    this.datosServices.getMonedas().subscribe((res:any) =>{
+    if (base === null) {
+      base = "EUR";
+    }
+    this.datosServices.getMonedas(base).subscribe((res:any) =>{
       this.monedas = [];
       for (const key in res.rates) {
-        let moneda = {'moneda':key, value: res.rates(key)};
+        let moneda = {'moneda':key, value: res.rates[key]};
         this.monedas.push(moneda);
       }
   })
